@@ -9,7 +9,7 @@ import java.util.List;
 public interface GestionLocal {
     void modifierClient(ClientEntity newClient, int id);
     void ajouterClient(ClientEntity client);
-    void supprimerClient(ClientEntity client);
+    void supprimerClient(int id);
 
     List<ClientEntity> consulterClients();
 

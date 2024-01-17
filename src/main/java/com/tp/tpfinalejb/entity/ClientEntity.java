@@ -1,13 +1,11 @@
 package com.tp.tpfinalejb.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 
 @Entity
+@Table(name="Clients", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
 public class ClientEntity implements Serializable {
 
     @Id

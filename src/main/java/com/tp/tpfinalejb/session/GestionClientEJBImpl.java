@@ -2,6 +2,9 @@ package com.tp.tpfinalejb.session;
 
 import com.tp.tpfinalejb.entity.ClientEntity;
 import jakarta.ejb.Singleton;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -9,70 +12,41 @@ import java.util.List;
 
 @Singleton(name = "GestionClientEJBImpl")
 public class GestionClientEJBImpl implements GestionLocal{
-    static List<ClientEntity> listeClient = new ArrayList<>();
+    @PersistenceContext(unitName = "ClientPersistent")
+    private EntityManager entityManager;
+
     @Override
     public void modifierClient(ClientEntity newClient, int id) {
-        int indiceClient = -1;
-        for (int i = 0; i < listeClient.size(); i++) {
-            if (listeClient.get(i).getId() == id) {
-                indiceClient = i;
-                break;
-            }
-        }
-
-        if(indiceClient != -1){
-            listeClient.set(indiceClient, newClient);
-        }
+        ClientEntity client = consulterClient(id);
+        client.setNom(newClient.getNom());
+        client.setPrenom(newClient.getPrenom());
+        client.setAdresse(newClient.getAdresse());
+        client.setEmail(newClient.getEmail());
+        client.setTelephone(newClient.getTelephone());
+        entityManager.merge(client);
     }
 
     @Override
     public void ajouterClient(ClientEntity client) {
-        listeClient.add(client);
-
+        entityManager.persist(client);
     }
 
     @Override
-    public void supprimerClient(ClientEntity client) {
-        int indiceClient = -1;
-        for (int i = 0; i < listeClient.size(); i++) {
-            if (listeClient.get(i).getId() == client.getId()) {
-                indiceClient = i;
-                break;
-            }
-        }
-
-        if (indiceClient != -1) {
-            listeClient.remove(indiceClient);
-        } else {
-            throw new RuntimeException("Client introuvable");
-        }
-
+    public void supprimerClient(int id) {
+        entityManager.remove(consulterClient(id));
     }
 
     @Override
     public List<ClientEntity> consulterClients() {
-        return listeClient;
+        Query requete = entityManager.createQuery("SELECT c FROM ClientEntity c");
+        return requete.getResultList();
     }
 
     @Override
     public ClientEntity consulterClient(int id) {
-        int indiceClient = -1;
-        for (int i = 0; i < listeClient.size(); i++) {
-            if (listeClient.get(i).getId() == id) {
-                indiceClient = i;
-                break;
-            }
-        }
-        if(indiceClient == -1){
-            throw new RuntimeException("Client introuvable");
-        }
-        return listeClient.get(indiceClient);
-    }
-
-
-    static {
-        listeClient.add(new ClientEntity("John", "Doe", "123 Main St", "john.doe@example.com", "555-1234"));
-        listeClient.add(new ClientEntity("Jane", "Smith", "456 Oak St", "jane.smith@example.com", "555-5678"));
-
+        ClientEntity client = entityManager.find(ClientEntity.class, id);
+        if(client == null)
+            throw new RuntimeException("Le Client inexistant");
+        return client;
     }
 }
