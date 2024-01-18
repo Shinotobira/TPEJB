@@ -5,10 +5,12 @@
 <html>
 <head>
     <title>Clients</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <form>
-<table border="1 solid black">
+    <h1 class="title">Liste des clients</h1>
+    <table>
     <tr>
         <th>Id</th>
         <th>Nom</th>
@@ -38,18 +40,17 @@
         <td>
                 ${client.telephone}
         </td>
-        <td>
-            <a href="http://localhost:8080/clientWEB/editClient?id=${client.id}"><button type="button" name="action" value="editClient">Modifier</button></a>
+        <td class="button-container">
+            <a href="http://localhost:8080/clientWEB/editClient?id=${client.id}"><button class="modifier" type="button" name="action" value="editClient">Modifier</button></a>
             <form action="clientServlet" method="post">
                 <input type="hidden" name="clientId" value="${client.id}">
-                <button type="submit" name="action" value="deleteClient" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ?')">Supprimer</button>
+                <button class="supprimer" type="submit" name="action" value="deleteClient" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce client ?')">Supprimer</button>
             </form>
         </td>
     </tr>
     </c:forEach>
 </table>
-
-<a href="http://localhost:8080/clientWEB/addClient"> <button type="button" name="action" value="addClient">Ajouté un client</button> </a>
+    <a href="http://localhost:8080/clientWEB/addClient"> <button class="ajouter" type="button" name="action" value="addClient">Ajouté un client</button> </a>
 </form>
 </body>
 </html>

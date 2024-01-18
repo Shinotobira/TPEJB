@@ -2,9 +2,11 @@
 <html>
 <head>
     <title>Modifier</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>Modifier client</h2>
+<div class="container">
+<h1 class="title">Modifier client</h1>
 <form action="editClient" method="post">
     <label for="nom">Nom :</label>
     <input type="text" id="nom" name="nom" value="${client.nom}"><br>
@@ -23,5 +25,6 @@
 
     <input type="submit" value="Modifier">
 </form>
+</div>
 </body>
 </html>
