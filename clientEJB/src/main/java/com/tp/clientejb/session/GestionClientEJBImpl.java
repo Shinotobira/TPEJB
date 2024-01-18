@@ -1,13 +1,10 @@
-package com.tp.tpfinalejb.session;
+package com.tp.clientejb.session;
 
-import com.tp.tpfinalejb.entity.ClientEntity;
+import com.tp.clientejb.entity.ClientEntity;
 import jakarta.ejb.Singleton;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
-
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 @Singleton(name = "GestionClientEJBImpl")

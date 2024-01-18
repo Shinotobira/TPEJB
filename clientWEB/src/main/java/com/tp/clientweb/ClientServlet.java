@@ -1,10 +1,10 @@
-package com.tp.tpfinalejb;
+package com.tp.clientweb;
 
 import java.io.*;
 import java.util.List;
 
-import com.tp.tpfinalejb.entity.ClientEntity;
-import com.tp.tpfinalejb.session.GestionLocal;
+import com.tp.clientejb.entity.ClientEntity;
+import com.tp.clientejb.session.GestionLocal;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
@@ -35,7 +35,7 @@ public class ClientServlet extends HttpServlet {
                 String clientId = request.getParameter("clientId");
                 if (clientId != null && !clientId.isEmpty()) {
                     metier.supprimerClient(Integer.parseInt(clientId));
-                    response.sendRedirect("/TPFinalEJB-1.0-SNAPSHOT/");
+                    response.sendRedirect("/clientWEB");
                 }
             }
         } catch (Exception e) {

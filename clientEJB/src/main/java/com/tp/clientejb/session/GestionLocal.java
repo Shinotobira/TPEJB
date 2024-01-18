@@ -1,6 +1,6 @@
-package com.tp.tpfinalejb.session;
+package com.tp.clientejb.session;
 
-import com.tp.tpfinalejb.entity.ClientEntity;
+import com.tp.clientejb.entity.ClientEntity;
 import jakarta.ejb.Local;
 
 import java.util.List;

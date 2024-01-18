@@ -1,4 +1,4 @@
-package com.tp.tpfinalejb.entity;
+package com.tp.clientejb.entity;
 
 import jakarta.persistence.*;
 

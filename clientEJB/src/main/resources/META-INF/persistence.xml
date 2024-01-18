@@ -5,7 +5,7 @@
              version="3.0">
     <persistence-unit name="ClientPersistent" transaction-type="JTA">
         <jta-data-source>java:/clientDB</jta-data-source>
-        <class>com.tp.tpfinalejb.entity.ClientEntity</class>
+        <class>com.tp.clientejb.entity.ClientEntity</class>
         <properties>
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create" />
         </properties>
