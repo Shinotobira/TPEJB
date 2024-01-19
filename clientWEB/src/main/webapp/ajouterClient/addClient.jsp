@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Ajouter</title>
-    <link rel="stylesheet" href="style.css">
+    <style><%@include file="addClientstyle.css"%> </style>
 </head>
 <body>
 <div class="container">

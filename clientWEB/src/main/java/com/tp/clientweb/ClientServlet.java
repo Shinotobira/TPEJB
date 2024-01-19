@@ -24,7 +24,7 @@ public class ClientServlet extends HttpServlet {
         response.setContentType("text/html");
         List<ClientEntity> listeClient = metier.consulterClients();
         request.setAttribute("listeClient", listeClient);
-        request.getRequestDispatcher("listClient.jsp").forward(request, response);
+        request.getRequestDispatcher("listeClient/listClient.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

@@ -25,7 +25,7 @@ public class EditClientServlet extends HttpServlet {
         response.setContentType("text/html");
         clientToEdit = metier.consulterClient(Integer.parseInt(request.getParameter("id")));
         request.setAttribute("client", clientToEdit);
-        request.getRequestDispatcher("editClient.jsp").forward(request, response);
+        request.getRequestDispatcher("modifierClient/editClient.jsp").forward(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>Clients</title>
-    <link rel="stylesheet" href="style.css">
+    <style><%@include file="listClientstyle.css"%> </style>
 </head>
 <body>
 <form>

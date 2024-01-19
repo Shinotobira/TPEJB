@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Modifier</title>
-    <link rel="stylesheet" href="style.css">
+    <style><%@include file="editClientstyle.css"%> </style>
 </head>
 <body>
 <div class="container">
